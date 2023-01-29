@@ -47,7 +47,7 @@ def pushToRootXML(app: str, version: str, appSoup: BeautifulSoup, rootSoup: Beau
     })
 
     # If addon already exists, check the version, if it's older rewrite with new info
-    if addon and addon.get('version') != version:
+    if addon:
         addon.decompose()
     
     addons.append(appSoup)
