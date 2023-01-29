@@ -96,7 +96,7 @@ def handlePluginVersion(root: BeautifulSoup, url: str, app: str, version: str, z
                 f.write(chunk) # Building file
 
     with open(zipPath + '.md5', 'w') as fc:
-        fc.write(hs.hexdigest())
+        fc.write(hs.hexdigest() + " *" + zipName)
     
     # Zip file
     with ZipFile(zipPath, 'r') as archive:
@@ -129,7 +129,7 @@ def main():
     
     rootHash = hashlib.md5(rootStr.encode())
     with open(PUBLIC_DIR + "/addons.xml.md5", 'w') as f:
-        f.write(rootHash.hexdigest())
+        f.write(rootHash.hexdigest() + "  " + "addons.xml")
 
 if __name__ == '__main__':
     main()
