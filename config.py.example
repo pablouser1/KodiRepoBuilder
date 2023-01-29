@@ -1,0 +1,6 @@
+GITHUB_TOKEN = "EXAMPLE_TOKEN"
+
+REPOS = [
+    ("pablouser1", "repository.pabloferreiro"),
+    ("example", "plugin.video.example")
+]
