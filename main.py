@@ -87,7 +87,7 @@ def handlePluginVersion(root: BeautifulSoup, url: str, app: str, version: str, z
         return
 
     os.makedirs(versionPath, exist_ok=True)
-    hs = hashlib.md5()
+    hs = hashlib.sha256()
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         with open(zipPath, 'wb') as f:
@@ -95,7 +95,7 @@ def handlePluginVersion(root: BeautifulSoup, url: str, app: str, version: str, z
                 hs.update(chunk) # Building hash
                 f.write(chunk) # Building file
 
-    with open(zipPath + '.md5', 'w') as fc:
+    with open(zipPath + '.sha256', 'w') as fc:
         fc.write(hs.hexdigest() + " *" + zipName)
     
     # Zip file
