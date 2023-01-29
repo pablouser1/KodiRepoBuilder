@@ -61,7 +61,7 @@ def handleAssets(path: str, app: str, soup: BeautifulSoup, archive: ZipFile):
     assets = assets_root.findChildren()
 
     if len(assets) > 0:
-        os.makedirs(path + '/resources')
+        os.makedirs(path + '/resources', exist_ok=True)
         for asset in assets:
             if not os.path.isfile(path + "/" + asset.text):
                 art = archive.read(app + "/" + asset.text)
